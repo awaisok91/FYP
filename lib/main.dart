@@ -1,4 +1,5 @@
-import 'package:e_learning/SCREENS/LOGIN_SIGNUP_SCREENS/signup.dart';
+import 'package:e_learning/SCREENS/splash_screen.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -13,8 +14,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Signup(),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(),
+
+      //this code is for user when it login once at once device until it logout.
+      // StreamBuilder(
+      //   stream: FirebaseAuth.instance.authStateChanges(),
+      //   builder: (context, snapshot) {
+      //     if (snapshot.hasData) {
+      //       return HomeScreen();
+      //     } else {
+      //       return Login();
+      //     }
+      //   },
+      // ),
     );
   }
 }
