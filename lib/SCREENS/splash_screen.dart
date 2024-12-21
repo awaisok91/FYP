@@ -1,4 +1,5 @@
 import 'package:e_learning/SCREENS/LOGIN_SIGNUP_SCREENS/login.dart';
+import 'package:e_learning/SCREENS/slider_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -19,21 +20,15 @@ class _SplashScreenState extends State<SplashScreen>
         overlays: SystemUiOverlay.values);
 
     // Delay for 2 seconds before navigating
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) => Login(),
+            builder: (context) => const Login(),
           ),
         );
       }
     });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    // No need to reset UI mode here, as we already use the default mode
   }
 
   @override
@@ -65,10 +60,10 @@ class _SplashScreenState extends State<SplashScreen>
                     // Blue to Green gradient
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                  ).createShader(Rect.fromLTWH(0, 0, 200, 70)),
+                  ).createShader(const Rect.fromLTWH(0, 0, 200, 70)),
                 shadows: [
                   Shadow(
-                    offset: Offset(3.0, 3.0),
+                    offset: const Offset(3.0, 3.0),
                     blurRadius: 4.0,
                     color: Colors.black
                         .withOpacity(0.5), // Soft shadow for readability

@@ -3,6 +3,7 @@ import 'package:e_learning/COMPNENTS/common_textfield.dart';
 import 'package:e_learning/COMPNENTS/snack_bar.dart';
 import 'package:e_learning/SCREENS/LOGIN_SIGNUP_SCREENS/login.dart';
 import 'package:e_learning/SCREENS/home_screen.dart';
+import 'package:e_learning/SCREENS/slider_page.dart';
 import 'package:flutter/material.dart';
 import 'package:e_learning/Services/authentication.dart';
 
@@ -47,7 +48,8 @@ class _SignupState extends State<Signup> {
       debugPrint("Signup successful, navigating to Home screen...");
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
+          //changes by awais
+          builder: (context) => const SliderPage(),
         ),
       );
     } else {
@@ -61,7 +63,7 @@ class _SignupState extends State<Signup> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       //main background color
-      backgroundColor: Color(0xFFE0E0E0),
+      backgroundColor: const Color(0xFFE0E0E0),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
@@ -87,10 +89,10 @@ class _SignupState extends State<Signup> {
                       // Gradient colors
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
-                    ).createShader(Rect.fromLTWH(0, 0, 200, 70)),
+                    ).createShader(const Rect.fromLTWH(0, 0, 200, 70)),
                   shadows: [
                     Shadow(
-                      offset: Offset(2.0, 2.0), // Slight offset for depth
+                      offset: const Offset(2.0, 2.0), // Slight offset for depth
                       blurRadius: 5.0,
                       color: Colors.black
                           .withOpacity(0.3), // Subtle shadow for legibility
@@ -98,7 +100,7 @@ class _SignupState extends State<Signup> {
                   ],
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               //all textfield taken from commontextfield
               CommonTextfield(

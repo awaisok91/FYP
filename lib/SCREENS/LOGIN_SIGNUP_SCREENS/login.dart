@@ -3,6 +3,7 @@ import 'package:e_learning/COMPNENTS/common_textfield.dart';
 import 'package:e_learning/COMPNENTS/snack_bar.dart';
 import 'package:e_learning/SCREENS/LOGIN_SIGNUP_SCREENS/signup.dart';
 import 'package:e_learning/SCREENS/home_screen.dart';
+import 'package:e_learning/SCREENS/slider_page.dart';
 import 'package:e_learning/Services/authentication.dart';
 import 'package:e_learning/Services/forget_password.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +55,8 @@ class _LoginState extends State<Login> {
         debugPrint("Signup successful, navigating to Home screen...");
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) => const HomeScreen(),
+            //changes by awais
+            builder: (context) => const SliderPage(),
           ),
         );
       } else {
@@ -73,7 +75,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Color(0xFFE0E0E0),
+      backgroundColor: const Color(0xFFE0E0E0),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -98,17 +100,17 @@ class _LoginState extends State<Login> {
                       colors: [Colors.blue.shade700, Colors.teal.shade400],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
-                    ).createShader(Rect.fromLTWH(0, 0, 200, 70)),
+                    ).createShader(const Rect.fromLTWH(0, 0, 200, 70)),
                   shadows: [
                     Shadow(
-                      offset: Offset(2.0, 2.0),
+                      offset: const Offset(2.0, 2.0),
                       blurRadius: 5.0,
                       color: Colors.black.withOpacity(0.3),
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               CommonTextfield(
                 textEditingController: emailController,
                 hintText: "Enter your email",
@@ -145,7 +147,7 @@ class _LoginState extends State<Login> {
                       onTap: loginUser,
                     ),
               //forget password
-              ForgetPassword(),
+              const ForgetPassword(),
               SizedBox(height: height / 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

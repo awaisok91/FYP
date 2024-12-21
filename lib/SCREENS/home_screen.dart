@@ -14,11 +14,37 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: const Text(
+          "E_Learning App",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+            letterSpacing: 2,
+            color: Colors.white,
+          ),
+        ),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const Drawer(),
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.menu,
+              color: Colors.white,
+              size: 40,
+            )),
+        centerTitle: true,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               "SUccssefully Login",
               style: TextStyle(
                 fontSize: 18,
@@ -31,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 await AuthServices().signOut();
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
-                    builder: (context) => Login(),
+                    builder: (context) => const Login(),
 
                     // i take random data in this .
                     //ibrahim if you want to remove such comment it.....

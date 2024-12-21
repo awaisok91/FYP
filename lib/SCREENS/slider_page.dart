@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:e_learning/SCREENS/LOGIN_SIGNUP_SCREENS/login.dart';
 import 'package:e_learning/SCREENS/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -11,14 +13,16 @@ class SliderPage extends StatefulWidget {
 }
 
 class _SliderPageState extends State<SliderPage> {
-  PageController _controller = PageController();
-  bool islast = false;
+  final PageController _controller = PageController();
 
+  bool islast = false;
+  //chnages by awais
+  @override
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFFE0E0E0),
+        backgroundColor: const Color(0xFFE0E0E0),
         body: Column(
           children: [
             Expanded(
@@ -48,7 +52,7 @@ class _SliderPageState extends State<SliderPage> {
                 ),
               ],
             )),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Center(
@@ -62,7 +66,7 @@ class _SliderPageState extends State<SliderPage> {
                 dotColor: Colors.black12,
               ),
             )),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             SizedBox(
@@ -75,19 +79,22 @@ class _SliderPageState extends State<SliderPage> {
                           borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
                     islast
-                        ? Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Login()))
+                        ? Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              //changes by awais
+                                builder: (context) => const HomeScreen()))
                         : _controller.nextPage(
-                            duration: Duration(milliseconds: 500),
+                            duration: const Duration(milliseconds: 500),
                             curve: Curves.easeIn);
                   },
                   child: islast
-                      ? Text(
+                      ? const Text(
                           "Done",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 18),
                         )
-                      : Text(
+                      : const Text(
                           "Next",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 18),
@@ -95,14 +102,17 @@ class _SliderPageState extends State<SliderPage> {
             ),
             TextButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Login()));
+                  Navigator.push(
+                      context,
+                      //changes by awais
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()));
                 },
-                child: Text(
+                child: const Text(
                   "Skip",
                   style: TextStyle(fontSize: 18),
                 )),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
           ],
@@ -124,21 +134,21 @@ class buildIntroPage extends StatelessWidget {
       children: [
         Expanded(
             child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               // color: Colors.amber,
               borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(20),
                   bottomLeft: Radius.circular(20))),
           child: Image.asset('tools/images/logo.png'),
         )),
-        SizedBox(
+        const SizedBox(
           height: 15,
         ),
         Text(
           title,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Padding(
@@ -146,10 +156,10 @@ class buildIntroPage extends StatelessWidget {
           child: Text(
             description,
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.black87, fontSize: 16),
+            style: const TextStyle(color: Colors.black87, fontSize: 16),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10.3,
         ),
       ],

@@ -15,14 +15,14 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 35),
+      padding: const EdgeInsets.symmetric(horizontal: 35),
       child: Align(
         alignment: Alignment.centerRight,
         child: InkWell(
           onTap: () {
             myDialogBox(context);
           },
-          child: Text(
+          child: const Text(
             "Forgot Password",
             style: TextStyle(
               fontWeight: FontWeight.bold,
@@ -48,7 +48,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -56,7 +56,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(),
-                      Text(
+                      const Text(
                         "Forgot Password",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -67,20 +67,20 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        icon: Icon(Icons.close),
+                        icon: const Icon(Icons.close),
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   TextField(
                     controller: emailcontroller,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: "Enter your email",
                       hintText: "e.g abc@gmail.com",
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () async {
                       await auth
@@ -101,7 +101,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
                     ),
-                    child: Text(
+                    child: const Text(
                       "Send",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,

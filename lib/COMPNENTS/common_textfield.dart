@@ -36,7 +36,7 @@ class CommonTextfield extends StatelessWidget {
           ),
           border: InputBorder.none,
           filled: true,
-          fillColor: Color(0xFFFFFFFF),
+          fillColor: const Color(0xFFFFFFFF),
           // fillColor: const Color(0xFFedf0f8),
           enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide.none,

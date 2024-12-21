@@ -1,3 +1,5 @@
+import 'package:e_learning/SCREENS/home_screen.dart';
+import 'package:e_learning/SCREENS/slider_page.dart';
 import 'package:e_learning/SCREENS/splash_screen.dart';
 
 import 'package:firebase_core/firebase_core.dart';
