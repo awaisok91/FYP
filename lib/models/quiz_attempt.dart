@@ -1,0 +1,44 @@
+class QuizAttempt {
+  final String id;
+  final String quizId;
+  final String userId;
+  final Map<String, String> answers;//questionid: selectedOptionId
+  final int score;
+  final DateTime startedAt;
+  final DateTime? completedAt;
+  final int timeSpend;
+  QuizAttempt({
+    required this.id,
+    required this.quizId,
+    required this.userId,
+    required this.answers,
+    required this.score,
+    required this.startedAt,
+    this.completedAt,
+    required this.timeSpend,
+  });
+factory QuizAttempt.fromJson(Map<String, dynamic> json) {
+    return QuizAttempt(
+      id: json['id'] ??'',
+      quizId: json['quizId'] ??'',
+      userId: json['userId'] ??'',
+      answers: Map<String, String>.from(json['answers'] ??{}),
+      score: json['score'] ??0,
+      startedAt: DateTime.parse(json['startedAt'] ),
+      completedAt: json['completedAt'] != null ? DateTime.parse(json['completedAt'] ) : null,
+      timeSpend: json['timeSpend'] ??0,
+    );
+}
+Map<String, dynamic> toJson() {
+  return {
+    'id': id,
+    'quizId': quizId,
+    'userId': userId,
+    'answers': answers,
+    'score': score,
+    'startedAt': startedAt.toIso8601String(),
+    'completedAt': completedAt?.toIso8601String(),
+    'timeSpend': timeSpend,
+  };
+}
+}
