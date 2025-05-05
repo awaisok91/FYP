@@ -17,14 +17,14 @@ class QuizNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: AppColors.accent,
         boxShadow: [
           BoxShadow(
             color: AppColors.primary.withOpacity(0.1),
             blurRadius: 10,
-            offset: Offset(0, -5),
+            offset: const Offset(0, -5),
           ),
         ],
       ),
@@ -62,12 +62,12 @@ class QuizNavigationBar extends StatelessWidget {
       onPressed: onpressed,
       style: TextButton.styleFrom(
         backgroundColor: isNext ? AppColors.primary : AppColors.accent,
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
           side: isNext
               ? BorderSide.none
-              : BorderSide(
+              : const BorderSide(
                   color: AppColors.primary,
                 ),
         ),
@@ -87,7 +87,7 @@ class QuizNavigationBar extends StatelessWidget {
                     : AppColors.accent.withOpacity(0.5),
                 size: 20,
               ),
-            if (!isNext) SizedBox(width: 8),
+            if (!isNext) const SizedBox(width: 8),
             Text(
               label,
               style: theme.textTheme.titleLarge?.copyWith(
@@ -97,7 +97,7 @@ class QuizNavigationBar extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            if (!isNext) SizedBox(width: 8),
+            if (!isNext) const SizedBox(width: 8),
             if (isNext)
               Icon(
                 icon,

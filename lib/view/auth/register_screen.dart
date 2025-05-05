@@ -46,14 +46,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
           );
         } else if (state.userModel != null) {
-          if (state.userModel!.role == UserRole.student) {}
-          // Get.offAllNamed(AppRoutes.teacherHome);
-          Get.offAllNamed(AppRoutes.main);
-
-        } else {
+          if (state.userModel!.role == UserRole.teacher) {}
+          Get.offAllNamed(AppRoutes.teacherHome);
           // Get.offAllNamed(AppRoutes.main);
+        } else {
+          Get.offAllNamed(AppRoutes.main);
           // Get.offAllNamed(AppRoutes.teacherHome);
-
         }
       },
       child: Scaffold(

@@ -55,13 +55,13 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           );
         } else if (state.userModel != null) {
-          if (state.userModel!.role == UserRole.student) {}
-          // Get.offAllNamed(AppRoutes.teacherHome);
-          Get.offAllNamed(AppRoutes.main);
+          if (state.userModel!.role == UserRole.teacher) {}
+          Get.offAllNamed(AppRoutes.teacherHome);
+          // Get.offAllNamed(AppRoutes.main);
 
         } else {
           Get.offAllNamed(AppRoutes.main);
-          Get.offAllNamed(AppRoutes.teacherHome);
+          // Get.offAllNamed(AppRoutes.teacherHome);
 
         }
       },

@@ -15,7 +15,7 @@ class QuizScoreCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      padding: EdgeInsets.all(24),
+      padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: AppColors.accent,
         borderRadius: BorderRadius.circular(16),
@@ -23,7 +23,7 @@ class QuizScoreCard extends StatelessWidget {
           BoxShadow(
             color: AppColors.primary.withOpacity(0.1),
             blurRadius: 10,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
           )
         ],
       ),
@@ -36,7 +36,7 @@ class QuizScoreCard extends StatelessWidget {
               color: AppColors.primary,
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Text(
             "$percentage%",
             style: theme.textTheme.displayLarge?.copyWith(

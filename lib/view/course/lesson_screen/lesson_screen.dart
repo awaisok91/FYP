@@ -120,7 +120,7 @@ class _LessonScreenState extends State<LessonScreen> {
           ),
           Expanded(
             child: SingleChildScrollView(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -130,14 +130,14 @@ class _LessonScreenState extends State<LessonScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Row(
                     children: [
                       Icon(
                         Icons.access_time,
                         color: theme.colorScheme.secondary,
                       ),
-                      SizedBox(width: 4),
+                      const SizedBox(width: 4),
                       Text(
                         "${lesson.duration} minutes",
                         style: theme.textTheme.bodySmall?.copyWith(
@@ -146,26 +146,26 @@ class _LessonScreenState extends State<LessonScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   Text(
                     "Description",
                     style: theme.textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     lesson.description,
                     style: theme.textTheme.titleLarge,
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   Text(
                     "Resources",
                     style: theme.textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   ...lesson.resources.map(
                     (resources) => ResourceTile(
                       title: resources.title,

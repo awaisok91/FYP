@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class CustomTextfield extends StatefulWidget {
   final String? hint;
   final String label;
+  final String? initialValue;
   final IconData? prefixIcon;
   final IconData? sufixicon;
   final bool obsecureText;
@@ -17,6 +18,7 @@ class CustomTextfield extends StatefulWidget {
   const CustomTextfield({
     super.key,
     this.hint,
+    this.initialValue,
     required this.label,
     this.prefixIcon,
     this.sufixicon,
@@ -47,6 +49,7 @@ class _CustomTextfieldState extends State<CustomTextfield> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
+      initialValue: widget.initialValue,
       obscureText: _obsecureText,
       validator: widget.validate,
       keyboardType: widget.keyboardType,

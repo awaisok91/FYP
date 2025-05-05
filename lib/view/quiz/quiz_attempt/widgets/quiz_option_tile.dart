@@ -21,7 +21,7 @@ class QuizOptionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      margin: EdgeInsets.only(bottom: 16),
+      margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color:
@@ -35,7 +35,7 @@ class QuizOptionTile extends StatelessWidget {
           onTap: onTap,
           borderRadius: BorderRadius.circular(16),
           child: Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Row(
               children: [
                 Container(
@@ -55,7 +55,7 @@ class QuizOptionTile extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Expanded(
                   child: Text(
                     text,

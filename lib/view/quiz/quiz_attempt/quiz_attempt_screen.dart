@@ -65,13 +65,13 @@ class _QuizAttemptScreenState extends State<QuizAttemptScreen> {
   void _naviagetToPage(int page) {
     _pageController.animateToPage(
       page,
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
   }
 
   void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (remainingSeconds > 0) {
         setState(() {
           remainingSeconds--;
@@ -142,7 +142,7 @@ class _QuizAttemptScreenState extends State<QuizAttemptScreen> {
       ),
       body: PageView.builder(
         controller: _pageController,
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         itemCount: quiz.questions.length,
         itemBuilder: (context, index) => QuizQuestionPage(
           questionNumber: index + 1,

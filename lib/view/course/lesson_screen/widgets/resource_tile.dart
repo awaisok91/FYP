@@ -1,6 +1,5 @@
 import 'package:e_learning/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class ResourceTile extends StatelessWidget {
   final String title;

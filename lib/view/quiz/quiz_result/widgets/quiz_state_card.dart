@@ -19,7 +19,7 @@ class QuizStateCard extends StatelessWidget {
         .where((q) => attempt.answers[q.id] == q.correctOptionId)
         .length;
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: AppColors.accent,
         borderRadius: BorderRadius.circular(16),
@@ -34,7 +34,7 @@ class QuizStateCard extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           _buildStatRow(
             theme,
             "Time Spend",
@@ -59,7 +59,7 @@ class QuizStateCard extends StatelessWidget {
     IconData icon,
   ) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         children: [
           Icon(
@@ -67,14 +67,14 @@ class QuizStateCard extends StatelessWidget {
             color: AppColors.primary,
             size: 20,
           ),
-          SizedBox(width: 12),
+          const SizedBox(width: 12),
           Text(
             label,
             style: theme.textTheme.bodyLarge?.copyWith(
               color: AppColors.secondary,
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Text(
             value,
             style: theme.textTheme.bodyLarge?.copyWith(

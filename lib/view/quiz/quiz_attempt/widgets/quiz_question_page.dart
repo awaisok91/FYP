@@ -27,7 +27,7 @@ class QuizQuestionPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(
               color: AppColors.primary.withOpacity(0.1),
               borderRadius: BorderRadius.circular(20),
@@ -40,7 +40,7 @@ class QuizQuestionPage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           Text(
             question.text,
             style: theme.textTheme.headlineSmall?.copyWith(
@@ -48,7 +48,7 @@ class QuizQuestionPage extends StatelessWidget {
               color: AppColors.primary,
             ),
           ),
-          SizedBox(height: 32),
+          const SizedBox(height: 32),
           ...question.options.map(
             (option) => QuizOptionTile(
               optionId: option.id,

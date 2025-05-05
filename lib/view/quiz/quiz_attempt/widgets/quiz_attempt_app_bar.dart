@@ -17,11 +17,11 @@ class QuizAttemptAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: AppColors.primary,
       elevation: 0,
-      iconTheme: IconThemeData(
+      iconTheme: const IconThemeData(
         color: AppColors.accent,
       ),
       title: Container(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 16,
           vertical: 8,
         ),
@@ -32,12 +32,12 @@ class QuizAttemptAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
+            const Icon(
               Icons.timer_outlined,
               size: 20,
               color: AppColors.accent,
             ),
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
             Text(
               formattedTime,
               style: theme.textTheme.titleMedium?.copyWith(
@@ -50,7 +50,7 @@ class QuizAttemptAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         Container(
-          margin: EdgeInsets.only(right: 8),
+          margin: const EdgeInsets.only(right: 8),
           child: TextButton(
             onPressed: onSubmit,
             style: TextButton.styleFrom(
@@ -72,5 +72,5 @@ class QuizAttemptAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

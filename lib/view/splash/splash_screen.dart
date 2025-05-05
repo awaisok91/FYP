@@ -52,52 +52,52 @@ class _SplashScreenState extends State<SplashScreen>
     });
   }
 
-  void _handleNavigation(BuildContext context) async {
-    if (_hasNavigated) return;
-    _hasNavigated = true;
-
-    final authState = context.read<AuthBloc>().state;
-
-    // Ensure GetStorage is already initialized before calling this
-    final isFirstTime = StorageServices.isFirstTime();
-
-    if (isFirstTime) {
-      await StorageServices.setFirstTime(false); // ✅ await this
-      Get.offNamed(AppRoutes.onboarding);
-    } else if (authState.userModel != null) {
-      if (authState.userModel!.role == UserRole.student) {
-        Get.offAllNamed(AppRoutes.main);
-      } else {
-        Get.offAllNamed(AppRoutes.main);
-      }
-    } else {
-      Get.offNamed(AppRoutes.login);
-    }
-  }
-
   // void _handleNavigation(BuildContext context) async {
   //   if (_hasNavigated) return;
   //   _hasNavigated = true;
-  //   //remove this if neded
-  //   // await StorageServices.setFirstTime(false);
+
   //   final authState = context.read<AuthBloc>().state;
-  //   // final isFirstTime = StorageServices.isFirstTime();
-  //   if (StorageServices.isFirstTime()) {
-  //     //Navigate to onboarding screen
-  //     StorageServices.setFirstTime(false);
+
+  //   // Ensure GetStorage is already initialized before calling this
+  //   final isFirstTime = StorageServices.isFirstTime();
+
+  //   if (isFirstTime) {
+  //     await StorageServices.setFirstTime(false); // ✅ await this
   //     Get.offNamed(AppRoutes.onboarding);
   //   } else if (authState.userModel != null) {
-  //     //Navigate based on user role
-  //     if (authState.userModel!.role == UserRole.teacher) {
-  //       Get.offAllNamed(AppRoutes.teacherHome);
+  //     if (authState.userModel!.role == UserRole.student) {
+  //       Get.offAllNamed(AppRoutes.main);
   //     } else {
   //       Get.offAllNamed(AppRoutes.main);
   //     }
   //   } else {
-  //     //Navigate to login screen
   //     Get.offNamed(AppRoutes.login);
   //   }
   // }
+
+  void _handleNavigation(BuildContext context) async {
+    if (_hasNavigated) return;
+    _hasNavigated = true;
+    //remove this if neded
+    // await StorageServices.setFirstTime(false);
+    final authState = context.read<AuthBloc>().state;
+    // final isFirstTime = StorageServices.isFirstTime();
+    if (StorageServices.isFirstTime()) {
+      //Navigate to onboarding screen
+      StorageServices.setFirstTime(false);
+      Get.offNamed(AppRoutes.onboarding);
+    } else if (authState.userModel != null) {
+      //Navigate based on user role
+      if (authState.userModel!.role == UserRole.teacher) {
+        Get.offAllNamed(AppRoutes.teacherHome);
+      } else {
+        Get.offAllNamed(AppRoutes.main);
+      }
+    } else {
+      //Navigate to login screen
+      Get.offNamed(AppRoutes.login);
+    }
+  }
 
   @override
   void dispose() {

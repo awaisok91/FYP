@@ -36,10 +36,10 @@ class QuizResultScreen extends StatelessWidget {
               onPressed: () => Get.offAllNamed(AppRoutes.main, arguments: {
                 "initialIndex": 2,
               }),
-              icon: Icon(Icons.close),
+              icon: const Icon(Icons.close),
             ),
             flexibleSpace: FlexibleSpaceBar(
-              titlePadding: EdgeInsets.all(16),
+              titlePadding: const EdgeInsets.all(16),
               title: Text(
                 "Quiz Results",
                 style: theme.textTheme.headlineMedium?.copyWith(
@@ -48,7 +48,7 @@ class QuizResultScreen extends StatelessWidget {
                 ),
               ),
               background: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
                       AppColors.primary,
@@ -63,19 +63,19 @@ class QuizResultScreen extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: Padding(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
                   QuizScoreCard(
                     percentage: percentage,
                     isPassed: isPassed,
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   QuizStateCard(
                     quiz: quiz,
                     attempt: attempt,
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   QuizQuestionAnalysis(
                     quiz: quiz,
                     attempt: attempt,

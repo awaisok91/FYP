@@ -7,13 +7,15 @@ import 'package:e_learning/view/course/course_detail/course_detail_screen.dart';
 import 'package:e_learning/view/course/courses_list/course_list_screen.dart';
 import 'package:e_learning/view/course/lesson_screen/lesson_screen.dart';
 import 'package:e_learning/view/home/home_screen.dart';
+import 'package:e_learning/view/notification/notification_screen.dart';
 import 'package:e_learning/view/onboarding/onboarding_screen.dart';
 import 'package:e_learning/view/profile/profile_screen.dart';
 import 'package:e_learning/view/quiz/quiz_attempt/quiz_attempt_screen.dart';
 import 'package:e_learning/view/quiz/quiz_list/quiz_list_screen.dart';
-import 'package:e_learning/view/quiz/quiz_result/quiz_result_screen.dart';
 import 'package:e_learning/view/splash/splash_screen.dart';
-import 'package:e_learning/view/teacher/teacher_home_screen.dart';
+import 'package:e_learning/view/teacher/create_course/create_course_screen.dart';
+import 'package:e_learning/view/teacher/my_course/my_course_screen.dart';
+import 'package:e_learning/view/teacher/teacher_home/teacher_home_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
@@ -39,9 +41,12 @@ class AppRoutes {
 
   //profile route
   static const String profile = '/profile';
+  static const String notifications = '/notifications';
 
   //teacher
   static const String teacherHome = '/teacher/home';
+  static const String myCourses = '/teacher/courses';
+  static const String createCourses = '/teacher/courses/create';
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -77,9 +82,18 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => HomeScreen(),
         );
+
       case teacherHome:
         return MaterialPageRoute(
           builder: (_) => const TeacherHomeScreen(),
+        );
+      case myCourses:
+        return MaterialPageRoute(
+          builder: (_) => const MyCourseScreen(),
+        );
+      case createCourses:
+        return MaterialPageRoute(
+          builder: (_) => const CreateCourseScreen(),
         );
       case courseslist:
         final args = settings.arguments as Map<String, dynamic>?;
@@ -123,6 +137,10 @@ class AppRoutes {
       case profile:
         return MaterialPageRoute(
           builder: (_) => const ProfileScreen(),
+        );
+      case notifications:
+        return MaterialPageRoute(
+          builder: (_) => const NotificationScreen(),
         );
 
       default:

@@ -16,7 +16,7 @@ class QuizQuestionAnalysis extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppColors.accent,
         borderRadius: BorderRadius.circular(16),
@@ -31,7 +31,7 @@ class QuizQuestionAnalysis extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           ...quiz.questions.map((question) {
             final userAnswer = attempt .answers[question.id];
             final isCorrect = userAnswer == question.correctOptionId;
@@ -52,8 +52,8 @@ class QuizQuestionAnalysis extends StatelessWidget {
     bool isCorrect,
   ) {
     return Container(
-      margin: EdgeInsets.only(bottom: 12),
-      padding: EdgeInsets.all(12),
+      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: isCorrect
             ? Colors.green.withOpacity(0.1)
@@ -66,7 +66,7 @@ class QuizQuestionAnalysis extends StatelessWidget {
             isCorrect ? Icons.check_circle : Icons.cancel,
             color: isCorrect ? Colors.green : Colors.red,
           ),
-          SizedBox(width: 12),
+          const SizedBox(width: 12),
           Expanded(
               child: Text(
             question.text,

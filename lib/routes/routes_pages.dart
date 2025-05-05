@@ -10,13 +10,16 @@ import 'package:e_learning/view/course/course_detail/course_detail_screen.dart';
 import 'package:e_learning/view/course/courses_list/course_list_screen.dart';
 import 'package:e_learning/view/course/lesson_screen/lesson_screen.dart';
 import 'package:e_learning/view/home/home_screen.dart';
+import 'package:e_learning/view/notification/notification_screen.dart';
 import 'package:e_learning/view/onboarding/onboarding_screen.dart';
 import 'package:e_learning/view/profile/profile_screen.dart';
 import 'package:e_learning/view/quiz/quiz_attempt/quiz_attempt_screen.dart';
 import 'package:e_learning/view/quiz/quiz_list/quiz_list_screen.dart';
 import 'package:e_learning/view/quiz/quiz_result/quiz_result_screen.dart';
 import 'package:e_learning/view/splash/splash_screen.dart';
-import 'package:e_learning/view/teacher/teacher_home_screen.dart';
+import 'package:e_learning/view/teacher/create_course/create_course_screen.dart';
+import 'package:e_learning/view/teacher/my_course/my_course_screen.dart';
+import 'package:e_learning/view/teacher/teacher_home/teacher_home_screen.dart';
 import 'package:get/get.dart';
 
 class AppPages {
@@ -94,8 +97,20 @@ class AppPages {
       page: () => const ProfileScreen(),
     ),
     GetPage(
+      name: AppRoutes.notifications,
+      page: () => const NotificationScreen(),
+    ),
+    GetPage(
       name: AppRoutes.teacherHome,
       page: () => const TeacherHomeScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.myCourses,
+      page: () => const MyCourseScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.createCourses,
+      page: () => const CreateCourseScreen(),
     ),
   ];
 }

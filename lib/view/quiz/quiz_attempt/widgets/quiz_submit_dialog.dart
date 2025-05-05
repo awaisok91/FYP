@@ -17,12 +17,12 @@ class QuizSubmitDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("Submit Quiz"),
-      content: Text("Are you sure you want to submit your answer"),
+      title: const Text("Submit Quiz"),
+      content: const Text("Are you sure you want to submit your answer"),
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: Text("Cancel"),
+          child: const Text("Cancel"),
         ),
         FilledButton(
           onPressed: () {
@@ -34,7 +34,7 @@ class QuizSubmitDialog extends StatelessWidget {
               ),
             );
           },
-          child: Text("Submit"),
+          child: const Text("Submit"),
         ),
       ],
     );
