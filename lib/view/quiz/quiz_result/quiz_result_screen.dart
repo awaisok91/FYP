@@ -2,7 +2,6 @@ import 'package:e_learning/core/theme/app_colors.dart';
 import 'package:e_learning/models/quiz.dart';
 import 'package:e_learning/models/quiz_attempt.dart';
 import 'package:e_learning/routes/app_routes.dart';
-import 'package:e_learning/view/onboarding/widgets/onboarding_page_widget.dart';
 import 'package:e_learning/view/quiz/quiz_result/widgets/quiz_question_analysis.dart';
 import 'package:e_learning/view/quiz/quiz_result/widgets/quiz_score_card.dart';
 import 'package:e_learning/view/quiz/quiz_result/widgets/quiz_state_card.dart';
@@ -21,7 +20,7 @@ class QuizResultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final totalPoints = quiz.questions.fold(0, (sum, q) => sum + q.points);
+    final totalPoints = quiz.questions.fold<int>(0, (sum, q) => sum + q.points);
     final percentage = ((attempt.score / totalPoints) * 100).round();
     final isPassed = percentage >= 70;
     return Scaffold(

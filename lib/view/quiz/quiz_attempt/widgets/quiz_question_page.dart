@@ -2,7 +2,6 @@ import 'package:e_learning/core/theme/app_colors.dart';
 import 'package:e_learning/models/question.dart';
 import 'package:e_learning/view/quiz/quiz_attempt/widgets/quiz_option_tile.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/http/utils/body_decoder.dart';
 
 class QuizQuestionPage extends StatelessWidget {
   final int questionNumber;

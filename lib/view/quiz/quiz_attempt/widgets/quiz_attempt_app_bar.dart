@@ -1,5 +1,4 @@
 import 'package:e_learning/core/theme/app_colors.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class QuizAttemptAppBar extends StatelessWidget implements PreferredSizeWidget {

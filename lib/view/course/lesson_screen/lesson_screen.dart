@@ -2,8 +2,6 @@ import 'package:chewie/chewie.dart';
 import 'package:e_learning/controller/vedio_controller.dart';
 import 'package:e_learning/core/theme/app_colors.dart';
 import 'package:e_learning/models/course.dart';
-import 'package:e_learning/models/lesson.dart';
-import 'package:e_learning/view/course/course_detail/widgets/lesson_tile.dart';
 import 'package:e_learning/view/course/lesson_screen/widgets/certification_dialog.dart';
 import 'package:e_learning/view/course/lesson_screen/widgets/resource_tile.dart';
 import 'package:e_learning/view/home/widgets/dummy_data_service.dart';

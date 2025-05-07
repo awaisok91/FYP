@@ -1,7 +1,6 @@
 import 'package:e_learning/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class CreateCourseAppBar extends StatelessWidget {
   final VoidCallback onSubmit;
@@ -28,7 +27,7 @@ class CreateCourseAppBar extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: onSubmit,
-          child: Text(
+          child: const Text(
             "Create",
             style: TextStyle(
               color: AppColors.accent,
@@ -36,7 +35,7 @@ class CreateCourseAppBar extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(width: 8),
+        const SizedBox(width: 8),
       ],
       flexibleSpace: FlexibleSpaceBar(
         titlePadding: EdgeInsets.only(

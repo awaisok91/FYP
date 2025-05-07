@@ -5,6 +5,7 @@ import 'package:e_learning/routes/app_routes.dart';
 import 'package:e_learning/view/auth/forgot_password_screen.dart';
 import 'package:e_learning/view/auth/login_screen.dart';
 import 'package:e_learning/view/auth/register_screen.dart';
+import 'package:e_learning/view/course/analytics_dashboard/analytics_dashboard_screen.dart';
 import 'package:e_learning/view/course/course_detail/course_detail_screen.dart';
 
 import 'package:e_learning/view/course/courses_list/course_list_screen.dart';
@@ -19,6 +20,8 @@ import 'package:e_learning/view/quiz/quiz_result/quiz_result_screen.dart';
 import 'package:e_learning/view/splash/splash_screen.dart';
 import 'package:e_learning/view/teacher/create_course/create_course_screen.dart';
 import 'package:e_learning/view/teacher/my_course/my_course_screen.dart';
+import 'package:e_learning/view/teacher/student_progress/student_progress_screen.dart';
+import 'package:e_learning/view/teacher/teacher_analytics/teacher_analytics_screen.dart';
 import 'package:e_learning/view/teacher/teacher_home/teacher_home_screen.dart';
 import 'package:get/get.dart';
 
@@ -97,6 +100,10 @@ class AppPages {
       page: () => const ProfileScreen(),
     ),
     GetPage(
+      name: AppRoutes.analytics,
+      page: () => const AnalyticsDashboardScreen(),
+    ),
+    GetPage(
       name: AppRoutes.notifications,
       page: () => const NotificationScreen(),
     ),
@@ -107,6 +114,14 @@ class AppPages {
     GetPage(
       name: AppRoutes.myCourses,
       page: () => const MyCourseScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.teacherAnalytics,
+      page: () => const TeacherAnalyticsScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.studentProgress,
+      page: () => const StudentProgressScreen(),
     ),
     GetPage(
       name: AppRoutes.createCourses,

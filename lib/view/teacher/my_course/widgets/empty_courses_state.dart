@@ -1,5 +1,4 @@
 import 'package:e_learning/core/theme/app_colors.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class EmptyCoursesState extends StatelessWidget {
@@ -16,7 +15,7 @@ class EmptyCoursesState extends StatelessWidget {
             size: 64,
             color: AppColors.primary.withOpacity(0.5),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Text(
             "No Course yet",
             style: TextStyle(
@@ -28,7 +27,7 @@ class EmptyCoursesState extends StatelessWidget {
             onPressed: () {
               //navigate to create course screen
             },
-            child: Text("Create Your First Course"),
+            child: const Text("Create Your First Course"),
           ),
         ],
       ),

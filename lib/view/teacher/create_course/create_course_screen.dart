@@ -1,8 +1,6 @@
-import 'package:e_learning/bloc/font/font_state.dart';
 import 'package:e_learning/core/theme/app_colors.dart';
 import 'package:e_learning/view/teacher/create_course/widgets/create_course_app_bar.dart';
 import 'package:e_learning/view/widgets/common/custom_textfield.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,7 +22,7 @@ class _CreateCourseScreenState extends State<CreateCourseScreen> {
     return Scaffold(
       backgroundColor: AppColors.lightBackground,
       body: CustomScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         slivers: [
           CreateCourseAppBar(
             onSubmit: _submitForm,
@@ -32,11 +30,11 @@ class _CreateCourseScreenState extends State<CreateCourseScreen> {
           SliverToBoxAdapter(
             child: Form(
               child: Padding(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 child: Column(
                   children: [
                     _buildImagePicker(),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
                     CustomTextfield(
                       label: "Course Title",
                       hint: "Enter course title",
@@ -48,7 +46,7 @@ class _CreateCourseScreenState extends State<CreateCourseScreen> {
                         return null;
                       },
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     CustomTextfield(
                       label: "Description",
                       hint: "Enter course description",
@@ -60,7 +58,7 @@ class _CreateCourseScreenState extends State<CreateCourseScreen> {
                         return null;
                       },
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     Row(
                       children: [
                         Expanded(
@@ -76,22 +74,22 @@ class _CreateCourseScreenState extends State<CreateCourseScreen> {
                             },
                           ),
                         ),
-                        SizedBox(width: 12),
+                        const SizedBox(width: 12),
                         Expanded(
                           child: _buildDropdown(),
                         ),
                       ],
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     _buildPremiumSwitch(),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
                     _buildDynamicList(
                       "Course Requirements",
                       _requirments,
                       (index) => _requirments.removeAt(index),
                       () => _requirments.add(""),
                     ),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
                     _buildDynamicList(
                       "What you will Learn",
                       _learningPoints,
@@ -119,20 +117,20 @@ class _CreateCourseScreenState extends State<CreateCourseScreen> {
       children: [
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 16,
             color: AppColors.primary,
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         ListView.builder(
           shrinkWrap: true,
-          physics: AlwaysScrollableScrollPhysics(),
+          physics: const AlwaysScrollableScrollPhysics(),
           itemCount: items.length,
           itemBuilder: (context, index) {
             return Padding(
-              padding: EdgeInsets.only(bottom: 8),
+              padding: const EdgeInsets.only(bottom: 8),
               child: Row(
                 children: [
                   Expanded(
@@ -173,6 +171,7 @@ class _CreateCourseScreenState extends State<CreateCourseScreen> {
         ),
         TextButton.icon(
           onPressed: () {},
+          icon: const Icon(Icons.add),
           label: Text(
             "Add $title",
           ),
@@ -186,7 +185,7 @@ class _CreateCourseScreenState extends State<CreateCourseScreen> {
 
   Widget _buildPremiumSwitch() {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -194,7 +193,7 @@ class _CreateCourseScreenState extends State<CreateCourseScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
+          const Text(
             "Premium Course",
             style: TextStyle(
               fontSize: 16,
@@ -218,7 +217,7 @@ class _CreateCourseScreenState extends State<CreateCourseScreen> {
   Widget _buildDropdown() {
     return Column(
       children: [
-        Text(
+        const Text(
           "Level",
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -226,9 +225,9 @@ class _CreateCourseScreenState extends State<CreateCourseScreen> {
             color: AppColors.primary,
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(12),
@@ -238,8 +237,8 @@ class _CreateCourseScreenState extends State<CreateCourseScreen> {
               value: _selectedLevel,
               items: ["Beginner", "Intermediate", "Advanced"]
                   .map((level) => DropdownMenuItem(
-                        child: Text("level"),
                         value: level,
+                        child: Text(level),
                       ))
                   .toList(),
               onChanged: (value) {
@@ -271,7 +270,7 @@ class _CreateCourseScreenState extends State<CreateCourseScreen> {
       child: Center(
         child: IconButton(
           onPressed: () {},
-          icon: Icon(
+          icon: const Icon(
             Icons.add_photo_alternate,
             size: 40,
           ),

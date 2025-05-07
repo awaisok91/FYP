@@ -65,19 +65,13 @@ class TeacherHomeScreen extends StatelessWidget {
                       icon: Icons.add_circle,
                       onTap: () => Get.toNamed(AppRoutes.createCourses)),
                   DashboardCard(
-                    title: "Analytics",
-                    icon: Icons.analytics,
-                    onTap: () {
-                      // Add your onTap functionality here
-                    },
-                  ),
+                      title: "Analytics",
+                      icon: Icons.analytics,
+                      onTap: () => Get.toNamed(AppRoutes.teacherAnalytics)),
                   DashboardCard(
-                    title: "Student progress",
-                    icon: Icons.people,
-                    onTap: () {
-                      // Add your onTap functionality here
-                    },
-                  ),
+                      title: "Student progress",
+                      icon: Icons.people,
+                      onTap: () => Get.toNamed(AppRoutes.studentProgress)),
                   DashboardCard(
                     title: "Messages",
                     icon: Icons.message,

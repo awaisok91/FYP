@@ -1,9 +1,7 @@
-import 'dart:ffi';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_learning/core/theme/app_colors.dart';
 import 'package:e_learning/models/course.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -17,7 +15,7 @@ class TeacherCourseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.only(bottom: 16),
+        margin: const EdgeInsets.only(bottom: 16),
         decoration: BoxDecoration(
           color: AppColors.accent,
           borderRadius: BorderRadius.circular(16),
@@ -25,7 +23,7 @@ class TeacherCourseCard extends StatelessWidget {
             BoxShadow(
               color: AppColors.primary.withOpacity(0.1),
               blurRadius: 10,
-              offset: Offset(0, 4),
+              offset: const Offset(0, 4),
             )
           ],
         ),
@@ -40,7 +38,7 @@ class TeacherCourseCard extends StatelessWidget {
                 Stack(
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.vertical(
+                      borderRadius: const BorderRadius.vertical(
                         top: Radius.circular(16),
                       ),
                       child: CachedNetworkImage(
@@ -49,18 +47,18 @@ class TeacherCourseCard extends StatelessWidget {
                         width: double.infinity,
                         fit: BoxFit.cover,
                         placeholder: (context, uri) => Shimmer.fromColors(
+                          baseColor: AppColors.primary.withOpacity(0.1),
+                          highlightColor: AppColors.accent,
                           child: Container(
                             height: 180,
                             width: double.infinity,
                             color: Colors.white,
                           ),
-                          baseColor: AppColors.primary.withOpacity(0.1),
-                          highlightColor: AppColors.accent,
                         ),
                         errorWidget: (context, uri, error) => Container(
                           height: 180,
                           color: AppColors.primary.withOpacity(0.1),
-                          child: Icon(Icons.error),
+                          child: const Icon(Icons.error),
                         ),
                       ),
                     ),
@@ -69,7 +67,7 @@ class TeacherCourseCard extends StatelessWidget {
                         top: 12,
                         right: 12,
                         child: Container(
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             horizontal: 12,
                             vertical: 6,
                           ),
@@ -77,7 +75,7 @@ class TeacherCourseCard extends StatelessWidget {
                             color: AppColors.primary,
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          child: Row(
+                          child: const Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Icon(
@@ -101,13 +99,13 @@ class TeacherCourseCard extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         course.title,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                           color: AppColors.primary,
@@ -115,7 +113,7 @@ class TeacherCourseCard extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Row(
                         children: [
                           Icon(
@@ -123,14 +121,14 @@ class TeacherCourseCard extends StatelessWidget {
                             size: 16,
                             color: Colors.grey[600],
                           ),
-                          SizedBox(width: 4),
+                          const SizedBox(width: 4),
                           Text(
                             "${course.enrollmentCount} students",
                             style: TextStyle(
                               color: Colors.grey[600],
                             ),
                           ),
-                          SizedBox(width: 16),
+                          const SizedBox(width: 16),
                           Text(
                             course.rating.toString(),
                             style: TextStyle(
@@ -139,13 +137,13 @@ class TeacherCourseCard extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             "\$${course.price}",
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
                               color: AppColors.primary,
@@ -155,8 +153,8 @@ class TeacherCourseCard extends StatelessWidget {
                             onPressed: () {
                               //navigate to edit screen
                             },
-                            icon: Icon(Icons.edit),
-                            label: Text("Edit"),
+                            icon: const Icon(Icons.edit),
+                            label: const Text("Edit"),
                           ),
                         ],
                       ),

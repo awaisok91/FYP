@@ -1,8 +1,6 @@
 import 'dart:async';
-import 'dart:ffi';
 
 import 'package:e_learning/core/theme/app_colors.dart';
-import 'package:e_learning/models/question.dart';
 import 'package:e_learning/models/quiz.dart';
 import 'package:e_learning/models/quiz_attempt.dart';
 import 'package:e_learning/view/home/widgets/dummy_data_service.dart';
@@ -11,7 +9,6 @@ import 'package:e_learning/view/quiz/quiz_attempt/widgets/quiz_navigation_bar.da
 import 'package:e_learning/view/quiz/quiz_attempt/widgets/quiz_question_page.dart';
 import 'package:e_learning/view/quiz/quiz_attempt/widgets/quiz_submit_dialog.dart';
 import 'package:e_learning/view/quiz/quiz_result/quiz_result_screen.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

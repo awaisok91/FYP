@@ -3,7 +3,6 @@ import 'package:e_learning/models/quiz_attempt.dart';
 import 'package:e_learning/view/quiz/quiz_result/quiz_result_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class QuizSubmitDialog extends StatelessWidget {
   final QuizAttempt attempt;
