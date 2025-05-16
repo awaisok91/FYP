@@ -12,7 +12,7 @@ class DummyDataService {
       description:
           "Master flutter and dart from scratch. Build real-world cross-platform apps.",
       price: 99.99,
-      imageUrl: "https://i.ytimg.com/vi/z9kOcyKst8s/maxresdefault.jpg",
+      imageUrl: "",
       instructorId: "inst_1",
       categoryId: '1',
       lessons: _createdFlutterLesson(),
@@ -139,7 +139,7 @@ class DummyDataService {
       description:
           "Learn photography techniques and editing skills to capture stunning images.",
       price: 69.99,
-      imageUrl: "https://i.ytimg.com/vi/z9kOcyKst8s/maxresdefault.jpg",
+      imageUrl: "",
       instructorId: "inst_6",
       categoryId: '6',
       lessons: _createdPhotographyLesson(),
@@ -214,8 +214,8 @@ class DummyDataService {
         duration: 30,
         resources: _createDummyResouces(),
         isPreview: true,
-        isLocked: false,
-        isCompleted: false, // ❌ not completed
+        // isLocked: false,
+        // isCompleted: false, // ❌ not completed
       ),
       _createLesson('2', "Dart Programming Basics", false, true), // ✅ completed
       _createLesson('3', 'Building UI with widgets', false, false),
@@ -323,8 +323,8 @@ class DummyDataService {
       duration: 30,
       resources: _createDummyResouces(),
       isPreview: isPreview,
-      isLocked: !isPreview,
-      isCompleted: isCompleted,
+      // isLocked: !isPreview,
+      // isCompleted: isCompleted,
     );
   }
 
@@ -364,7 +364,8 @@ class DummyDataService {
 
   static bool isCourseCompleted(String courseId) {
     final course = getCourseById(courseId);
-    return course.lessons.every((lesson) => lesson.isCompleted);
+    return false;
+    // course.lessons.every((lesson) => lesson.isCompleted);
   }
 
   static List<Question> _createdFlutterQuizQuestion() {
@@ -568,9 +569,9 @@ class DummyDataService {
 
       if (lessonIndex != -1) {
         final updatedLesson = course.lessons[lessonIndex].copyWith(
-          isCompleted: isCompleated ?? course.lessons[lessonIndex].isCompleted,
-          isLocked: isLocked ?? course.lessons[lessonIndex].isLocked,
-        );
+            // isCompleted: isCompleated ?? course.lessons[lessonIndex].isCompleted,
+            // isLocked: isLocked ?? course.lessons[lessonIndex].isLocked,
+            );
         courses[courseIndex].lessons[lessonIndex] = updatedLesson;
       }
     }
@@ -578,19 +579,20 @@ class DummyDataService {
 
   static bool isLessonCompleated(String courseId, String lessonId) {
     final course = getCourseById(courseId);
-    return course.lessons
-        .firstWhere(
-          (lesson) => lesson.id == lessonId,
-          orElse: () => Lesson(
-            id: "",
-            title: "",
-            description: "",
-            vedioUrl: "",
-            duration: 0,
-            resources: [],
-          ),
-        )
-        .isCompleted;
+    return false;
+    // course.lessons
+    //     .firstWhere(
+    //       (lesson) => lesson.id == lessonId,
+    //       orElse: () => Lesson(
+    //         id: "",
+    //         title: "",
+    //         description: "",
+    //         vedioUrl: "",
+    //         duration: 0,
+    //         resources: [],
+    //       ),
+    //     )
+    //     .isCompleted;
   }
 }
 

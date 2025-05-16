@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_learning/core/theme/app_colors.dart';
-import 'package:e_learning/view/home/widgets/dummy_data_service.dart';
+import 'package:e_learning/services/dummy_data_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
@@ -14,8 +14,10 @@ class InProgressSection extends StatelessWidget {
     final inProgressCourse = DummyDataService.courses
         .where(
           (course) =>
-              course.lessons.any((lesson) => lesson.isCompleted) &&
-              !course.lessons.every((lesson) => lesson.isCompleted),
+              course.lessons.any((lesson) => false) &&
+              !course.lessons.every((lesson) => false),
+          // course.lessons.any((lesson) => lesson.isCompleted) &&
+          // !course.lessons.every((lesson) => lesson.isCompleted),
         )
         .toList();
 
@@ -33,7 +35,8 @@ class InProgressSection extends StatelessWidget {
         Column(
           children: inProgressCourse.map((course) {
             final completedLessons =
-                course.lessons.where((lesson) => lesson.isCompleted).length;
+                // course.lessons.where((lesson) => lesson.isCompleted).length;
+                course.lessons.where((lesson) => false).length;
             final totalLessons = course.lessons.length;
             final progress = completedLessons / totalLessons;
 

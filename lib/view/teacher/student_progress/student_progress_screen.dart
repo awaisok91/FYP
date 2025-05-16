@@ -1,5 +1,5 @@
 import 'package:e_learning/core/theme/app_colors.dart';
-import 'package:e_learning/view/home/widgets/dummy_data_service.dart';
+import 'package:e_learning/services/dummy_data_service.dart';
 import 'package:e_learning/view/teacher/student_progress/widget/performance_card.dart';
 import 'package:e_learning/view/teacher/student_progress/widget/student_progress_app_bar.dart';
 import 'package:e_learning/view/teacher/student_progress/widget/student_progress_card.dart';

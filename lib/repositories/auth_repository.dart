@@ -64,14 +64,14 @@ class AuthRepository {
     required String password,
   }) async {
     try {
-      final UserCredential = await _firebaseAuth.signInWithEmailAndPassword(
+      final userCredential = await _firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
       //get user data from firestore
       final doc = await _firestore
           .collection("users")
-          .doc(UserCredential.user!.uid)
+          .doc(userCredential.user!.uid)
           .get();
       if (!doc.exists) {
         throw Exception("User data not found");
@@ -103,15 +103,26 @@ class AuthRepository {
   Future<void> updateProfile({
     String? fullName,
     String? photoUrl,
+    String? phoneNumber,
+    String? bio,
   }) async {
     try {
       final user = _firebaseAuth.currentUser;
       if (user == null) throw Exception("User not found");
+      final updates = <String, dynamic>{};
       if (fullName != null) {
         await user.updateDisplayName(fullName);
+        updates["fullName"] = fullName;
       }
       if (photoUrl != null) {
         await user.updatePhotoURL(photoUrl);
+        updates["photoUrl"] = photoUrl;
+      }
+      if (phoneNumber != null) updates["phoneNumber"] = phoneNumber;
+      if (bio != null) updates["bio"] = bio;
+      //update firestore if there is changes
+      if (updates.isNotEmpty) {
+        await _firestore.collection("users").doc(user.uid).update(updates);
       }
     } on FirebaseAuthException catch (e) {
       throw _handleAuthException(e);

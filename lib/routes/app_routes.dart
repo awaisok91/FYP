@@ -7,12 +7,17 @@ import 'package:e_learning/view/course/course_detail/course_detail_screen.dart';
 
 import 'package:e_learning/view/course/courses_list/course_list_screen.dart';
 import 'package:e_learning/view/course/lesson_screen/lesson_screen.dart';
+import 'package:e_learning/view/help_&_support/help_and_support_screen.dart';
 import 'package:e_learning/view/home/home_screen.dart';
 import 'package:e_learning/view/notification/notification_screen.dart';
 import 'package:e_learning/view/onboarding/onboarding_screen.dart';
+import 'package:e_learning/view/privacy_&_Terms_condition/privacy_policy_screen.dart';
+import 'package:e_learning/view/privacy_&_Terms_condition/term_condition_screen.dart';
+import 'package:e_learning/view/profile/edit_profile_screen.dart';
 import 'package:e_learning/view/profile/profile_screen.dart';
 import 'package:e_learning/view/quiz/quiz_attempt/quiz_attempt_screen.dart';
 import 'package:e_learning/view/quiz/quiz_list/quiz_list_screen.dart';
+import 'package:e_learning/view/settings/setting_screen.dart';
 import 'package:e_learning/view/splash/splash_screen.dart';
 import 'package:e_learning/view/teacher/create_course/create_course_screen.dart';
 import 'package:e_learning/view/teacher/my_course/my_course_screen.dart';
@@ -45,7 +50,12 @@ class AppRoutes {
 
   //profile route
   static const String profile = '/profile';
+  static const String editprofile = '/profile/edit';
   static const String notifications = '/notifications';
+  static const String setting = '/setting';
+  static const String privacyPolicy = '/privacy-policy';
+  static const String termCondition = '/term-condition';
+  static const String helpAndSupport = '/help-support';
 
   //teacher
   static const String teacherHome = '/teacher/home';
@@ -168,14 +178,39 @@ class AppRoutes {
           builder: (_) => const ProfileScreen(),
         );
 
+      case editprofile:
+        return MaterialPageRoute(
+          builder: (_) => const EditProfileScreen(),
+        );
+
       case notifications:
         return MaterialPageRoute(
           builder: (_) => const NotificationScreen(),
         );
 
+      case setting:
+        return MaterialPageRoute(
+          builder: (_) => const SettingScreen(),
+        );
+
+      case privacyPolicy:
+        return MaterialPageRoute(
+          builder: (_) => const PrivacyPolicyScreen(),
+        );
+
+      case termCondition:
+        return MaterialPageRoute(
+          builder: (_) => const TermConditionScreen(),
+        );
+
+        case helpAndSupport:
+        return MaterialPageRoute(
+          builder: (_) => const HelpAndSupportScreen(),
+        );
+
       case analytics:
         return MaterialPageRoute(
-          builder: (_) => const AnalyticsDashboardScreen(),
+          builder: (_) => AnalyticsDashboardScreen(),
         );
 
       default:

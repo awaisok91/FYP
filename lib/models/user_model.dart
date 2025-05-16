@@ -5,6 +5,8 @@ class UserModel {
   final String email;
   final String? fullName;
   final String? photoUrl;
+  final String? phoneNumber;
+  final String? bio;
   final DateTime createdAt;
   final DateTime lastLoginAt;
   final UserRole role;
@@ -13,6 +15,8 @@ class UserModel {
     required this.email,
     this.fullName,
     this.photoUrl,
+    this.phoneNumber,
+    this.bio,
     required this.createdAt,
     required this.lastLoginAt,
     required this.role,
@@ -22,7 +26,9 @@ class UserModel {
     return UserModel(
       uid: doc.id,
       fullName: data["fullName"] ?? "",
-      photoUrl: data["photoUrl"] ?? "",
+      photoUrl: data["photoUrl"],
+      phoneNumber: data["phoneNumber"],
+      bio: data["bio"],
       email: data["email"] ?? "",
       createdAt: (data["createdAt"] as Timestamp).toDate(),
       lastLoginAt: (data["lastLoginAt"] as Timestamp).toDate(),
@@ -36,6 +42,8 @@ class UserModel {
     return {
       "fullName": fullName,
       "photoUrl": photoUrl,
+      "phoneNumber": phoneNumber,
+      "bio": bio,
       "email": email,
       "createdAt": Timestamp.fromDate(createdAt),
       "lastLoginAt": Timestamp.fromDate(lastLoginAt),

@@ -2,7 +2,7 @@
 import 'package:e_learning/core/theme/app_colors.dart';
 import 'package:e_learning/routes/app_routes.dart';
 import 'package:e_learning/view/course/course_detail/widgets/lesson_tile.dart';
-import 'package:e_learning/view/home/widgets/dummy_data_service.dart';
+import 'package:e_learning/services/dummy_data_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

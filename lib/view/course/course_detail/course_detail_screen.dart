@@ -4,7 +4,7 @@ import 'package:e_learning/view/course/course_detail/widgets/course_detail_app_b
 import 'package:e_learning/view/course/course_detail/widgets/course_info_card.dart';
 import 'package:e_learning/view/course/course_detail/widgets/lesson_list.dart';
 import 'package:e_learning/view/course/course_detail/widgets/review_section.dart';
-import 'package:e_learning/view/home/widgets/dummy_data_service.dart';
+import 'package:e_learning/services/dummy_data_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,6 +1,6 @@
 import 'package:e_learning/models/category.dart';
 import 'package:e_learning/view/home/widgets/category_section.dart';
-import 'package:e_learning/view/home/widgets/dummy_data_service.dart';
+import 'package:e_learning/services/dummy_data_service.dart';
 import 'package:e_learning/view/home/widgets/home_app_bar.dart';
 import 'package:e_learning/view/home/widgets/in_progress_section.dart';
 import 'package:e_learning/view/home/widgets/recommended_section.dart';

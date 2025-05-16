@@ -1,4 +1,3 @@
-
 import 'package:e_learning/models/lesson.dart';
 
 class Course {
@@ -19,6 +18,7 @@ class Course {
   final DateTime createdAt;
   final DateTime updatedAt;
   final bool ispremium;
+  final List<String> prerequisites;
   Course({
     required this.id,
     required this.title,
@@ -37,28 +37,53 @@ class Course {
     required this.createdAt,
     required this.updatedAt,
     this.ispremium = false,
+    this.prerequisites = const [],
   });
   factory Course.fromjson(Map<String, dynamic> json) => Course(
-        id: json['id'],
-        title: json["title"],
-        description: json["description"],
-        categoryId: json["id"],
-        price: json["categoryId"].toDouble(),
-        imageUrl: json["imageUrl"],
-        instructorId: json["instructed"],
-        rating: json["rating"]?.toDouble() ?? 0.0,
+        id: json['id'] ?? '',
+        title: json["title"] ?? '',
+        description: json["description"] ?? '',
+        categoryId: json["categoryId"] ?? '',
+        price: (json["price"] ?? 0).toDouble(),
+        imageUrl: json["imageUrl"] ?? '',
+        instructorId: json["instructorId"] ?? '', // ✅ fixed typo
+        rating: (json["rating"] ?? 0).toDouble(),
         reviewCount: json["reviewCount"] ?? 0,
         enrollmentCount: json["enrollmentCount"] ?? 0,
-        lessons: (json["lessons"] as List)
-            .map((lesson) => Lesson.fromJson(lesson))
+        lessons: (json["lessons"] as List<dynamic>? ?? [])
+            .map((lesson) => Lesson.fromJson(lesson as Map<String, dynamic>))
             .toList(),
-        level: json["level"],
-        requirments: List<String>.from(json["requirments"]),
-        whatYouWillLearn: List<String>.from(json["whatYouWillLearn"]),
-        createdAt: DateTime.parse(json["createdAt"]),
-        updatedAt: DateTime.parse(json["updatedAt"]),
+        level: json["level"] ?? '',
+        requirments: List<String>.from(json["requirments"] ?? []),
+        whatYouWillLearn: List<String>.from(json["whatYouWillLearn"] ?? []),
+        createdAt: DateTime.tryParse(json["createdAt"] ?? '') ?? DateTime.now(),
+        updatedAt: DateTime.tryParse(json["updatedAt"] ?? '') ?? DateTime.now(),
         ispremium: json["ispremium"] ?? false,
+        prerequisites: List<String>.from(json["prerequisites"] ?? []),
       );
+
+  // factory Course.fromjson(Map<String, dynamic> json) => Course(
+  //       id: json['id'],
+  //       title: json["title"],
+  //       description: json["description"],
+  //       categoryId: json["categoryId"],
+  //       price: json["price"].toDouble(),
+  //       imageUrl: json["imageUrl"],
+  //       instructorId: json["instructed"],
+  //       rating: json["rating"]?.toDouble() ?? 0.0,
+  //       reviewCount: json["reviewCount"] ?? 0,
+  //       enrollmentCount: json["enrollmentCount"] ?? 0,
+  //       lessons: (json["lessons"] as List)
+  //           .map((lesson) => Lesson.fromJson(lesson))
+  //           .toList(),
+  //       level: json["level"],
+  //       requirments: List<String>.from(json["requirments"]),
+  //       whatYouWillLearn: List<String>.from(json["whatYouWillLearn"]),
+  //       createdAt: DateTime.parse(json["createdAt"]),
+  //       updatedAt: DateTime.parse(json["updatedAt"]),
+  //       ispremium: json["ispremium"] ?? false,
+  //       prerequisites: List<String>.from(json["prerequisites"] ?? []),
+  //     );
   Map<String, dynamic> toJson() => {
         "id": id,
         "title": title,
@@ -70,12 +95,13 @@ class Course {
         "rating": rating,
         "reviewCount": reviewCount,
         "enrollmentCount": enrollmentCount,
-        "lessons": lessons.map((lessons)=>lessons.toJson()).toList(),
+        "lessons": lessons.map((lessons) => lessons.toJson()).toList(),
         "level": level,
         "requirments": requirments,
         "whatYouWillLearn": whatYouWillLearn,
         "createdAt": createdAt.toIso8601String(),
         "updatedAt": updatedAt.toIso8601String(),
         "ispremium": ispremium,
+        "prerequisites": prerequisites,
       };
 }

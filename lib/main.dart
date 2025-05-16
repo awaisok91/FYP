@@ -2,6 +2,7 @@
 // import 'package:e_learning/bloc/auth/auth_state.dart';
 // import 'package:e_learning/bloc/font/font_bloc.dart';
 // import 'package:e_learning/bloc/font/font_state.dart';
+// import 'package:e_learning/bloc/profile/profile_bloc.dart';
 // import 'package:e_learning/core/theme/app_theme.dart';
 // import 'package:e_learning/routes/app_routes.dart';
 // import 'package:e_learning/routes/routes_pages.dart';
@@ -30,7 +31,10 @@
 //         ),
 //         BlocProvider<AuthBloc>(
 //           create: (context) => AuthBloc(),
-//         )
+//         ),
+//         // BlocProvider<ProfileBloc>(
+//         //   create: (context) => ProfileBloc(),
+//         // ),
 //       ],
 //       child: BlocListener<AuthBloc, AuthState>(
 //         listener: (context, state) {
@@ -64,6 +68,7 @@ import 'package:e_learning/bloc/auth/auth_bloc.dart';
 import 'package:e_learning/bloc/auth/auth_state.dart';
 import 'package:e_learning/bloc/font/font_bloc.dart';
 import 'package:e_learning/bloc/font/font_state.dart';
+import 'package:e_learning/bloc/profile/profile_bloc.dart';
 import 'package:e_learning/core/theme/app_theme.dart';
 import 'package:e_learning/routes/app_routes.dart';
 import 'package:e_learning/routes/routes_pages.dart';
@@ -93,18 +98,26 @@ class MyApp extends StatelessWidget {
         BlocProvider<AuthBloc>(
           create: (context) => AuthBloc(),
         ),
+        BlocProvider<ProfileBloc>(
+          create: (context) => ProfileBloc(
+            authBloc: context.read<AuthBloc>(),
+            // authRepository: AuthRepository(),
+          ),
+        ),
       ],
       child: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state.error != null) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.error!),
-                  backgroundColor: Colors.red,
-                ),
-              );
-            });
+            WidgetsBinding.instance.addPostFrameCallback(
+              (_) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(state.error!),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+              },
+            );
           }
         },
         child: BlocBuilder<FontBloc, FontState>(

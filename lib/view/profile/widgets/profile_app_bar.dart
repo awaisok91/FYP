@@ -1,15 +1,22 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_learning/bloc/profile/profile_bloc.dart';
+import 'package:e_learning/bloc/profile/profile_state.dart';
 import 'package:e_learning/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ProfileAppBar extends StatelessWidget {
   final String initials;
   final String fullName;
   final String email;
+  final String? photoUrl;
   const ProfileAppBar({
     super.key,
     required this.initials,
     required this.fullName,
     required this.email,
+    this.photoUrl,
   });
 
   @override
@@ -43,16 +50,35 @@ class ProfileAppBar extends StatelessWidget {
                     width: 2,
                   ),
                 ),
-                child: CircleAvatar(
-                  radius: 60,
-                  backgroundColor: AppColors.lightSurface,
-                  child: Text(
-                    initials,
-                    style: theme.textTheme.displaySmall?.copyWith(
-                      color: AppColors.primary,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                child: BlocBuilder<ProfileBloc, ProfileState>(
+                  builder: (context, state) {
+                    if (state.isPhotoUploading) {
+                      return Shimmer.fromColors(
+                        baseColor: AppColors.primary.withOpacity(0.3),
+                        highlightColor: AppColors.accent,
+                        child: const CircleAvatar(
+                          radius: 60,
+                          backgroundColor: Colors.white,
+                        ),
+                      );
+                    }
+                    return CircleAvatar(
+                      radius: 60,
+                      backgroundColor: AppColors.lightSurface,
+                      backgroundImage: photoUrl != null
+                          ? CachedNetworkImageProvider(photoUrl!)
+                          : null,
+                      child: photoUrl == null
+                          ? Text(
+                              initials,
+                              style: theme.textTheme.displaySmall?.copyWith(
+                                color: AppColors.primary,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          : null,
+                    );
+                  },
                 ),
               ),
               const SizedBox(height: 16),

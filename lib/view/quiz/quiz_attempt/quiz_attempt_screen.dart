@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:e_learning/core/theme/app_colors.dart';
 import 'package:e_learning/models/quiz.dart';
 import 'package:e_learning/models/quiz_attempt.dart';
-import 'package:e_learning/view/home/widgets/dummy_data_service.dart';
+import 'package:e_learning/services/dummy_data_service.dart';
 import 'package:e_learning/view/quiz/quiz_attempt/widgets/quiz_attempt_app_bar.dart';
 import 'package:e_learning/view/quiz/quiz_attempt/widgets/quiz_navigation_bar.dart';
 import 'package:e_learning/view/quiz/quiz_attempt/widgets/quiz_question_page.dart';

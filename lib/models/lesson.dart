@@ -6,8 +6,8 @@ class Lesson {
   final int duration;
   final List<Resource> resources;
   final bool isPreview;
-  final bool isLocked;
-  final bool isCompleted;
+  // final bool isLocked;
+  // final bool isCompleted;
   Lesson({
     required this.id,
     required this.title,
@@ -16,30 +16,30 @@ class Lesson {
     required this.duration,
     required this.resources,
     this.isPreview = false,
-    this.isLocked = true,
-    this.isCompleted = false,
+    // this.isLocked = true,
+    // this.isCompleted = false,
   });
   Lesson copyWith({
     String? id,
     String? title,
     String? description,
-    String? vedioUrl,
+    String? videoUrl,
     int? duration,
     List<Resource>? resources,
     bool? isPreview,
-    bool? isLocked,
-    bool? isCompleted,
+    // bool? isLocked,
+    // bool? isCompleted,
   }) {
     return Lesson(
       id: id ?? this.id,
       title: title ?? this.title,
       description: description ?? this.description,
-      vedioUrl: vedioUrl ?? this.vedioUrl,
+      vedioUrl: vedioUrl ?? vedioUrl,
       duration: duration ?? this.duration,
       resources: resources ?? this.resources,
       isPreview: isPreview ?? this.isPreview,
-      isLocked: isLocked ?? this.isLocked,
-      isCompleted: isCompleted ?? this.isCompleted,
+      // isLocked: isLocked ?? this.isLocked,
+      // isCompleted: isCompleted ?? this.isCompleted,
     );
   }
 
@@ -49,10 +49,12 @@ class Lesson {
         description: json["description"],
         vedioUrl: json["vedioUrl"],
         duration: json["duration"],
-        resources: (json["resources"] as List).map((resource) => Resource.fromJson(resource)).toList(),
+        resources: (json["resources"] as List)
+            .map((resource) => Resource.fromJson(resource))
+            .toList(),
         isPreview: json["isPreview"] ?? false,
-        isLocked: json["isLocked"] ?? true,
-        isCompleted: json["isCompleted"] ?? false,
+        // isLocked: json["isLocked"] ?? true,
+        // isCompleted: json["isCompleted"] ?? false,
       );
   Map<String, dynamic> toJson() => {
         "id": id,
@@ -62,8 +64,8 @@ class Lesson {
         "duration": duration,
         "resources": resources.map((resource) => resource.toJson()).toList(),
         "isPreview": isPreview,
-        "isLocked": isLocked,
-        "isCompleted": isCompleted,
+        // "isLocked": isLocked,
+        // "isCompleted": isCompleted,
       };
   String get videoStreamUrl {
     //add your vedio streaming url here
