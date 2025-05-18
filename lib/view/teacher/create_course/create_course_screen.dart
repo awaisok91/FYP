@@ -1,5 +1,7 @@
 import 'package:chewie/chewie.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_learning/bloc/course/course_bloc.dart';
+import 'package:e_learning/bloc/course/course_event.dart';
 import 'package:e_learning/core/theme/app_colors.dart';
 import 'package:e_learning/models/course.dart';
 import 'package:e_learning/models/lesson.dart';
@@ -11,6 +13,7 @@ import 'package:e_learning/view/widgets/common/custom_textfield.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shimmer/shimmer.dart';
@@ -19,7 +22,8 @@ import 'package:video_player/video_player.dart';
 import 'package:flutter/services.dart';
 
 class CreateCourseScreen extends StatefulWidget {
-  const CreateCourseScreen({super.key});
+  final Course? course;
+  const CreateCourseScreen({super.key, this.course});
 
   @override
   State<CreateCourseScreen> createState() => _CreateCourseScreenState();
@@ -74,6 +78,28 @@ class _CreateCourseScreenState extends State<CreateCourseScreen> {
     super.initState();
     _loadCategories();
     _loadAvailableCourse();
+    if (widget.course != null) {
+      _initializeCourseData();
+    }
+  }
+
+  void _initializeCourseData() {
+    final course = widget.course!;
+    _titleController.text = course.title;
+    _descriptionController.text = course.description;
+    _priceController.text = course.price.toString();
+    _selectedLevel = course.level;
+    _selectedCategoryId = course.categoryId;
+    _isPremium = course.ispremium;
+    _requirments.clear();
+    _requirments.addAll(course.requirments);
+    _learningPoints.clear();
+    _learningPoints.addAll(course.whatYouWillLearn);
+    _lessons.clear();
+    _lessons.addAll(course.lessons);
+    _courseImageUrl = course.imageUrl;
+    _selectedPrerequisites.clear();
+    _selectedPrerequisites.addAll(course.prerequisites);
   }
 
   Future<void> _loadCategories() async {
@@ -146,6 +172,7 @@ class _CreateCourseScreenState extends State<CreateCourseScreen> {
             slivers: [
               CreateCourseAppBar(
                 onSubmit: _submitForm,
+                course: widget.course,
               ),
               SliverToBoxAdapter(
                 child: Form(
@@ -233,6 +260,32 @@ class _CreateCourseScreenState extends State<CreateCourseScreen> {
               )
             ],
           ),
+          if (_isloading)
+            Center(
+              child: Container(
+                width: 100,
+                height: 100,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 10,
+                      offset: Offset(0, 5),
+                    )
+                  ],
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.all(16),
+                  child: CircularProgressIndicator(
+                    strokeWidth: 3,
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(AppColors.primary),
+                  ),
+                ),
+              ),
+            ),
         ],
       ),
     );
@@ -955,7 +1008,7 @@ class _CreateCourseScreenState extends State<CreateCourseScreen> {
     setState(() => _isloading = true);
     try {
       final course = Course(
-        id: const Uuid().v4(),
+        id: widget.course?.id ?? const Uuid().v4(),
         title: _titleController.text,
         description: _descriptionController.text,
         price: double.parse(_priceController.text),
@@ -966,19 +1019,39 @@ class _CreateCourseScreenState extends State<CreateCourseScreen> {
         level: _selectedLevel,
         requirments: _requirments.where((r) => r.isNotEmpty).toList(),
         whatYouWillLearn: _learningPoints.where((p) => p.isNotEmpty).toList(),
-        createdAt: DateTime.now(),
+        createdAt: widget.course?.createdAt ?? DateTime.now(),
         updatedAt: DateTime.now(),
+        ispremium: _isPremium,
         prerequisites: _selectedPrerequisites,
+        rating: widget.course?.rating ?? 0.0,
+        reviewCount: widget.course?.reviewCount ?? 0,
+        enrollmentCount: widget.course?.enrollmentCount ?? 0,
       );
-      await _courseRepository.createCourse(course);
-      Get.back();
-      Get.snackbar(
-        "Success",
-        "Course created successfully",
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.green[100],
-        colorText: Colors.green[900],
-      );
+      if (widget.course != null) {
+        await _courseRepository.updateCourse(course);
+        //dispatch updated course event to refresh the course list
+        context.read<CourseBloc>().add(UpdateCourse(
+              FirebaseAuth.instance.currentUser!.uid,
+            ));
+        Get.back();
+        Get.snackbar(
+          "Success",
+          "Course updated successfully",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.green[100],
+          colorText: Colors.green[900],
+        );
+      } else {
+        await _courseRepository.createCourse(course);
+        Get.back();
+        Get.snackbar(
+          "Success",
+          "Course created successfully",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.green[100],
+          colorText: Colors.green[900],
+        );
+      }
     } catch (e) {
       Get.snackbar(
         "Error",

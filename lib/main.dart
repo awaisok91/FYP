@@ -66,10 +66,12 @@
 // }
 import 'package:e_learning/bloc/auth/auth_bloc.dart';
 import 'package:e_learning/bloc/auth/auth_state.dart';
+import 'package:e_learning/bloc/course/course_bloc.dart';
 import 'package:e_learning/bloc/font/font_bloc.dart';
 import 'package:e_learning/bloc/font/font_state.dart';
 import 'package:e_learning/bloc/profile/profile_bloc.dart';
 import 'package:e_learning/core/theme/app_theme.dart';
+import 'package:e_learning/repositories/courses_repository.dart';
 import 'package:e_learning/routes/app_routes.dart';
 import 'package:e_learning/routes/routes_pages.dart';
 import 'package:e_learning/services/storage_services.dart';
@@ -102,6 +104,12 @@ class MyApp extends StatelessWidget {
           create: (context) => ProfileBloc(
             authBloc: context.read<AuthBloc>(),
             // authRepository: AuthRepository(),
+          ),
+        ),
+         BlocProvider<CourseBloc>(
+          create: (context) => CourseBloc(
+            authBloc: context.read<AuthBloc>(),
+            coursesRepository: CoursesRepository(),
           ),
         ),
       ],

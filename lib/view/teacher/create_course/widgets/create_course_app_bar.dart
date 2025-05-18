@@ -1,12 +1,15 @@
 import 'package:e_learning/core/theme/app_colors.dart';
+import 'package:e_learning/models/course.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CreateCourseAppBar extends StatelessWidget {
   final VoidCallback onSubmit;
+  final Course? course;
   const CreateCourseAppBar({
     super.key,
     required this.onSubmit,
+    this.course,
   });
 
   @override
@@ -25,13 +28,24 @@ class CreateCourseAppBar extends StatelessWidget {
         ),
       ),
       actions: [
-        TextButton(
-          onPressed: onSubmit,
-          child: const Text(
-            "Create",
-            style: TextStyle(
-              color: AppColors.accent,
-              fontWeight: FontWeight.bold,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: ElevatedButton(
+            onPressed: onSubmit,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.white,
+              foregroundColor: AppColors.primary,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+            child: Text(
+              // "Create",
+              course != null ? "Update" : "Create",
+              style: const TextStyle(
+                // color: AppColors.accent,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
@@ -43,7 +57,7 @@ class CreateCourseAppBar extends StatelessWidget {
           bottom: 16,
         ),
         title: Text(
-          "Create New Course",
+          course != null ? "Edit Course" : "Create New Course",
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                 color: AppColors.accent,
                 fontWeight: FontWeight.bold,
